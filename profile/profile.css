@@ -1,89 +1,88 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
+/* Body */
 body {
   min-height: 100vh;
-  background: radial-gradient(circle at top, #0b0b0b, #050505 70%, #000);
-  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 0;
-  overflow-x: hidden;
+  background-color: #0a0a0a; /* тёмный фон */
+  color: #fff;
 }
 
-/* card */
+/* Карточка профиля */
 .card {
-  width: 100%;
-  max-width: 400px;
-  background: linear-gradient(180deg, #111, #222, #111);
-  border-radius: 22px;
-  overflow: hidden;
-  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
+  background-color: #111; /* тёмный фон карточки */
+  border: 2px solid #00ffff; /* голубая обводка */
+  border-radius: 16px;
+  padding: 30px 40px;
   text-align: center;
-  padding: 40px 20px;
-  position: relative;
+  max-width: 350px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4); /* лёгкий glow */
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* glow effect */
-.glow {
-  animation: cardGlow 4s ease-in-out infinite;
-}
-@keyframes cardGlow {
-  0%, 100% { box-shadow: 0 0 20px rgba(255,255,255,0.05), 0 15px 40px rgba(0,0,0,.8); }
-  50% { box-shadow: 0 0 35px rgba(255,255,255,0.12), 0 20px 50px rgba(0,0,0,.9); }
+/* Эффект при наведении */
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
 }
 
-/* header */
+/* Имя */
 .name {
   font-size: 28px;
-  font-weight: 700;
-  margin-bottom: 10px;
-  color: #ff6ec4;
-  text-shadow: 0 0 8px rgba(255,110,196,0.8);
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #00ffff;
+  text-shadow: 0 0 8px #00ffff;
 }
+
+/* Подзаголовок */
 .subtitle {
-  font-size: 14px;
+  font-size: 16px;
   color: #aaa;
   margin-bottom: 15px;
 }
+
+/* Описание */
 .desc {
   font-size: 14px;
-  line-height: 1.6;
-  color: #ddd;
-  margin-bottom: 25px;
+  line-height: 1.5;
+  color: #ccc;
+  margin-bottom: 20px;
 }
 
-/* кнопка */
+/* Кнопка */
 .profile-btn {
   display: inline-block;
-  padding: 12px 24px;
-  background: linear-gradient(135deg, #7873f5, #ff6ec4);
-  color: #fff;
-  border-radius: 14px;
+  padding: 10px 25px;
+  margin-bottom: 20px;
+  color: #0a0a0a;
+  background-color: #00ffff;
   text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
-}
-.profile-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 20px rgba(120,115,245,0.7), 0 0 25px rgba(255,110,196,0.7);
+  font-weight: bold;
+  border-radius: 8px;
+  transition: background-color 0.3s, color 0.3s;
 }
 
-/* custom notice */
-.notice {
-  background: rgba(255,255,255,0.05);
-  padding: 12px;
-  border-radius: 12px;
-  color: #ccc;
-  font-size: 13px;
-  margin-top: 20px;
+.profile-btn:hover {
+  background-color: #00bfbf;
+  color: #fff;
 }
+
+/* Уведомление */
+.notice {
+  font-size: 12px;
+  color: #888;
+}
+
 .notice .badge {
-  font-weight: 700;
-  color: #ff6ec4;
+  color: #00ffff;
+  font-weight: bold;
 }
