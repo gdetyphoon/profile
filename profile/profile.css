@@ -6,7 +6,6 @@
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-/* Body */
 body {
   min-height: 100vh;
   display: flex;
@@ -15,48 +14,47 @@ body {
   background-color: #0a0a0a;
   color: #fff;
   overflow: hidden;
+  padding: 20px;
 }
 
-/* Рамка по краям экрана */
+/* Рамка по краям экрана с неоном */
 .border-frame {
   position: relative;
   width: 90%;
+  max-width: 800px;
   height: 90%;
-  border: 4px solid #00ffff;
-  border-radius: 16px;
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.7);
+  border: 4px solid;
+  border-image-slice: 1;
+  border-width: 4px;
+  border-image-source: linear-gradient(135deg, #ff6ec4, #7873f5);
+  border-radius: 20px;
+  box-shadow: 0 0 20px #ff6ec4, 0 0 40px #7873f5;
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-/* Карточка внутри рамки */
-.card {
-  background-color: #111;
-  padding: 40px 60px;
-  border-radius: 12px;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
-}
-
-/* Текст */
-.info {
-  font-size: 24px;
-  color: #00ffff;
-  text-shadow: 0 0 10px #00ffff;
-  font-weight: bold;
-  text-align: center;
+  animation: neonGlow 2s infinite alternate;
 }
 
 /* Glow анимация рамки */
 @keyframes neonGlow {
-  0%, 100% {
-    box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
+  0% {
+    box-shadow: 0 0 20px #ff6ec4, 0 0 40px #7873f5;
   }
   50% {
-    box-shadow: 0 0 40px #00ffff, 0 0 80px #00ffff, 0 0 100px #00ffff;
+    box-shadow: 0 0 40px #ff6ec4, 0 0 80px #7873f5;
+  }
+  100% {
+    box-shadow: 0 0 30px #ff6ec4, 0 0 60px #7873f5;
   }
 }
 
-.border-frame {
-  animation: neonGlow 2s infinite alternate;
+/* Текст внутри рамки */
+.info {
+  font-size: 28px;
+  font-weight: bold;
+  background: linear-gradient(135deg, #ff6ec4, #7873f5);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 0 10px #ff6ec4, 0 0 20px #7873f5;
+  text-align: center;
 }
