@@ -1,3 +1,4 @@
+/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -7,69 +8,101 @@
 
 body {
   min-height: 100vh;
-  background: radial-gradient(circle at top, #0b0b0b, #050505 60%, #000);
+  background:
+    radial-gradient(circle at 20% 20%, #111, transparent 40%),
+    radial-gradient(circle at 80% 80%, #050505, transparent 40%),
+    #000;
   color: #fff;
   display: flex;
   justify-content: center;
   padding: 20px 0;
   overflow-x: hidden;
+  animation: bgMove 14s ease-in-out infinite alternate;
 }
 
-/* particles */
-#particles {
+@keyframes bgMove {
+  from { background-position: 0 0, 100% 100%; }
+  to   { background-position: 100% 0, 0 100%; }
+}
+
+/* STARS */
+.stars {
   position: fixed;
   inset: 0;
+  background:
+    radial-gradient(1px 1px at 20% 30%, #fff, transparent),
+    radial-gradient(1px 1px at 80% 70%, #aaa, transparent),
+    radial-gradient(1px 1px at 50% 50%, #fff, transparent);
+  opacity: .35;
+  animation: starsMove 25s linear infinite;
   pointer-events: none;
   z-index: 0;
 }
 
-/* card */
+@keyframes starsMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(-300px); }
+}
+
+/* CARD */
 .card {
   width: 100%;
   max-width: 380px;
   background: linear-gradient(180deg, #0a0a0a, #111, #0a0a0a);
   border-radius: 22px;
   overflow: hidden;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.8);
   position: relative;
   z-index: 1;
-}
-.glow {
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,.08);
   animation: cardGlow 4s ease-in-out infinite;
 }
+
+.card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 24px;
+  background: linear-gradient(120deg, #fff, #777, #fff);
+  filter: blur(12px);
+  opacity: .25;
+  animation: borderRotate 8s linear infinite;
+  z-index: -1;
+}
+
+@keyframes borderRotate {
+  to { transform: rotate(360deg); }
+}
+
 @keyframes cardGlow {
-  0%, 100% {
+  0%,100% {
     box-shadow: 0 0 20px rgba(255,255,255,.05),
                 0 15px 40px rgba(0,0,0,.8);
   }
   50% {
     box-shadow: 0 0 35px rgba(255,255,255,.12),
-                0 20px 50px rgba(0,0,0,.9);
+                0 20px 55px rgba(0,0,0,.9);
   }
 }
 
-/* header с видео */
+/* HEADER */
 .header {
   height: 160px;
   position: relative;
   overflow: hidden;
   border-bottom-left-radius: 22px;
   border-bottom-right-radius: 22px;
-  background: #111;
 }
 
 .header-video {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: brightness(0.5); /* затемнение видео */
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 0;
+  filter: brightness(.45) contrast(1.1);
 }
 
-/* avatar поверх видео */
+/* AVATAR */
 .avatar {
   width: 96px;
   height: 96px;
@@ -81,59 +114,75 @@ body {
   transform: translateX(-50%);
   object-fit: cover;
   z-index: 2;
+  animation: float 6s ease-in-out infinite, pulse 2.5s infinite;
 }
-.pulse {
-  animation: pulse 2.5s infinite;
+
+@keyframes float {
+  0%,100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(-10px); }
 }
+
 @keyframes pulse {
   0% { box-shadow: 0 0 0 0 rgba(255,255,255,.6); }
   70% { box-shadow: 0 0 0 18px rgba(255,255,255,0); }
   100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
 }
 
-/* body карточки */
+/* BODY */
 .body {
-  padding: 70px 20px 20px;
+  padding: 70px 20px 22px;
   text-align: center;
 }
-.name { font-size: 26px; font-weight: 700; }
-.subtitle { margin-top: 6px; font-size: 13px; color: #aaa; }
-.desc { font-size: 14px; line-height: 1.6; color: #ddd; margin: 18px 0 14px; }
-.neon-text { text-shadow: 0 0 6px rgba(255,255,255,.6), 0 0 12px rgba(255,255,255,.4); }
 
-/* telegram кнопка */
+.name {
+  font-size: 26px;
+  font-weight: 800;
+  background: linear-gradient(90deg, #fff, #aaa, #fff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textGlow 3s infinite alternate;
+}
+
+@keyframes textGlow {
+  from { filter: drop-shadow(0 0 4px rgba(255,255,255,.3)); }
+  to   { filter: drop-shadow(0 0 10px rgba(255,255,255,.8)); }
+}
+
+.subtitle {
+  margin-top: 6px;
+  font-size: 13px;
+  color: #aaa;
+}
+
+.desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #ddd;
+  margin: 18px 0 16px;
+}
+
+/* TELEGRAM */
 .tg-wrap {
   display: flex;
   justify-content: center;
-  margin: 8px 0 18px;
 }
+
 .tg-btn {
-  width: 54px;
-  height: 54px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
+  border: 1px solid rgba(255,255,255,.15);
   background: transparent;
-  border: 1px solid #2a2a2a;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  font-size: 0; /* скрыть текст */
   background-image: url('https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg');
-  background-size: 60%;
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 60%;
   cursor: pointer;
+  transition: transform .3s ease, box-shadow .3s ease;
 }
-.glow-btn {
-  position: relative;
+
+.tg-btn:hover {
+  transform: scale(1.15) rotate(6deg);
+  box-shadow: 0 0 22px rgba(255,255,255,.7);
 }
-.glow-btn::after {
-  content: "";
-  position: absolute;
-  inset: -2px;
-  border-radius: inherit;
-  background: linear-gradient(45deg, #fff,#888,#fff);
-  opacity: .15;
-  filter: blur(8px);
-  z-index: -1;
-}
+
