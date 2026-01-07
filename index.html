@@ -24,10 +24,14 @@
     </div>
 
     <div class="player glass">
-      <button id="playBtn" class="play-btn glow-btn">▶</button>
-      <span class="track-name">Happy Nation</span>
-      <span id="currentTime" class="track-time">0:00</span> / 
-      <span id="duration" class="track-time">0:00</span>
+      <div class="player-row">
+        <button id="playBtn" class="play-btn glow-btn">▶</button>
+        <div class="track-info">
+          <span class="track-name">Happy Nation</span>
+          <span class="track-time"><span id="currentTime">0:00</span> / <span id="duration">0:00</span></span>
+        </div>
+      </div>
+
       <div class="progress-container">
         <div id="progress" class="progress"></div>
       </div>
