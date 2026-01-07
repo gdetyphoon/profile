@@ -24,38 +24,27 @@
       Social Engineer, Reverse Engineer
     </div>
 
-    <!-- Плеер -->
+    <!-- PLAYER -->
     <div class="player glass">
-      <div class="player-row">
+      <div class="player-top">
         <button id="playBtn" class="play-btn glow-btn">▶</button>
-        <div class="track-info-column">
-          <span class="track-name">Happy Nation</span>
-          <div class="progress-container">
-            <div id="progress" class="progress"></div>
-          </div>
-          <span class="track-time"><span id="currentTime">0:00</span> / <span id="duration">0:00</span></span>
+        <span class="track-name">Happy Nation</span>
+      </div>
+      <div class="progress-row">
+        <div class="progress-container">
+          <div id="progress" class="progress"></div>
         </div>
+        <span class="track-time" id="currentTime">0:00 / <span id="duration">0:00</span></span>
       </div>
     </div>
 
-    <!-- Аудио -->
+    <!-- аудио -->
     <audio id="music" src="https://gdetyphoon.github.io/music/happy-nation.mp3" preload="auto"></audio>
 
-    <!-- Telegram -->
+    <!-- TELEGRAM -->
     <div class="tg-wrap">
       <a class="tg-btn glow-btn" href="https://t.me/USERNAME" target="_blank">✈</a>
     </div>
-  </div>
-
-  <!-- Комментарии -->
-  <div class="comments glass">
-    <h2>Комментарии</h2>
-    <div id="commentList"></div>
-    <form id="commentForm" class="form">
-      <input type="text" id="name" placeholder="Твоё имя" required>
-      <textarea id="text" placeholder="Оставь комментарий..." required></textarea>
-      <button type="submit" class="glow-btn">Отправить</button>
-    </form>
   </div>
 </div>
 
