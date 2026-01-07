@@ -123,29 +123,12 @@ body{
 .track-name{
   font-size:14px;
   color:#ddd;
+  font-weight:500;
 }
 .track-time{
   font-size:13px;
   color:#fff;
   margin-top:4px;
-}
-
-/* progress bar */
-.progress-container{
-  width:100%;
-  height:6px;
-  background:rgba(255,255,255,0.2);
-  border-radius:3px;
-  overflow:hidden;
-  margin-top:5px;
-  cursor:pointer;
-}
-.progress{
-  height:100%;
-  width:0%;
-  background:linear-gradient(90deg,#ff6ec4,#7873f5);
-  border-radius:3px;
-  transition:width 0.2s linear;
 }
 
 /* telegram */
@@ -227,7 +210,7 @@ body{
   transition:0.2s;
 }
 .form button:hover{
-  box-shadow:0 0 15px rgba(255,255,255,0.3);
+  box-shadow:0 0 15px rgba(255,255,255,.3);
 }
 
 /* upload button (если нужно) */
