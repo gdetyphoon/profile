@@ -1,39 +1,58 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GdeTyphoon</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GdeTyphoon</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="particles"></div>
+  <!-- Фоновые частицы / звёзды -->
+  <div class="stars"></div>
 
-<div class="card neon-border glow">
+  <!-- Карточка -->
+  <div class="card neon-border glow">
 
-<div class="card glow">
-  <div class="header">
-    <!-- Видео баннер только сверху -->
-    <video class="header-video" src="photo/banner.mp4" autoplay muted loop></video>
-  </div>
-
-  <!-- Аватарка -->
-  <img class="avatar pulse" src="https://gdetyphoon.github.io/photo/avatar.jpg" alt="avatar">
-
-  <div class="body">
-    <div class="name neon-text">GdeTyphoon</div>
-    <div class="subtitle">Digital profile</div>
-    <div class="desc">
-      Worker, Coder, Web,<br>
+    <!-- Header с видео -->
+    <div class="header">
+      <video
+        class="header-video"
+        src="photo/banner.mp4"
+        autoplay
+        muted
+        loop
+        playsinline>
+      </video>
     </div>
 
-    <!-- Telegram кнопка -->
-    <div class="tg-wrap">
-      <a class="tg-btn glow-btn" href="https://t.me/flytag" target="_blank"></a>
+    <!-- Аватар -->
+    <img
+      class="avatar pulse"
+      src="https://gdetyphoon.github.io/photo/avatar.jpg"
+      alt="avatar">
+
+    <!-- Контент -->
+    <div class="body">
+      <div class="name neon-text">GdeTyphoon</div>
+      <div class="subtitle">Digital profile</div>
+
+      <div class="desc">
+        Worker, Coder, Web,<br>
+      </div>
+
+      <!-- Telegram -->
+      <div class="tg-wrap">
+        <a
+          class="tg-btn glow-btn"
+          href="https://t.me/flytag"
+          target="_blank"
+          aria-label="Telegram">
+        </a>
+      </div>
     </div>
+
   </div>
-</div>
 
 </body>
 </html>
