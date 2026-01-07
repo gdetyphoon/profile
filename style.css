@@ -99,12 +99,12 @@ body {
   text-align: center;
 }
 
-/* NAME + ROLE */
+/* NAME + VERIFIED */
 .name-wrapper {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 4px;
+  gap: 8px;
   margin-bottom: 4px;
 }
 
@@ -122,12 +122,11 @@ body {
   to   { text-shadow: 0 0 14px rgba(255,255,255,.8); }
 }
 
-.role {
-  font-size: 13px;
-  font-weight: 700;
-  color: #ff2a2a;
-  text-shadow: 0 0 4px #ff2a2a, 0 0 8px rgba(255,42,42,.5), 0 0 12px rgba(255,42,42,.3);
-  letter-spacing: 1px;
+.verified img {
+  width: 22px;
+  height: 22px;
+  filter: drop-shadow(0 0 4px #00f9ff) drop-shadow(0 0 8px rgba(0,249,255,.5));
+  border-radius: 50%;
 }
 
 /* SUBTITLE */
@@ -260,7 +259,7 @@ body {
 @media (max-width: 420px) {
   .card { width: 95%; }
   .name { font-size: 22px; }
-  .role { font-size: 11px; }
+  .verified img { width: 18px; height: 18px; }
   .subtitle { font-size: 12px; }
   .notice { font-size: 13px; padding: 14px; }
   .tg-btn { width: 46px; height: 46px; }
