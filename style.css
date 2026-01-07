@@ -1,110 +1,246 @@
-// ===========================
-// MUSIC — play/pause и прогресс
-// ===========================
-const audio = document.getElementById("music");
-const btn = document.getElementById("playBtn");
-const currentTimeEl = document.getElementById("currentTime");
-const durationEl = document.getElementById("duration");
-const progress = document.getElementById("progress");
-const progressContainer = document.querySelector(".progress-container");
-
-// Кнопка play/pause
-btn.addEventListener("click", () => {
-  if (audio.paused) {
-    audio.play().catch(() => {
-      alert("Браузер блокирует воспроизведение музыки. Нажмите ещё раз.");
-    });
-    btn.textContent = "❚❚";
-  } else {
-    audio.pause();
-    btn.textContent = "▶";
-  }
-});
-
-// Когда метаданные загружены, показываем длительность
-audio.addEventListener("loadedmetadata", () => {
-  durationEl.textContent = formatTime(audio.duration);
-});
-
-// Обновляем текущее время и прогресс
-audio.addEventListener("timeupdate", () => {
-  currentTimeEl.textContent = formatTime(audio.currentTime);
-  const percent = (audio.currentTime / audio.duration) * 100;
-  progress.style.width = percent + "%";
-});
-
-// Клик по прогресс-бару для перемотки
-progressContainer.addEventListener("click", e => {
-  const width = progressContainer.clientWidth;
-  const clickX = e.offsetX;
-  audio.currentTime = (clickX / width) * audio.duration;
-});
-
-// Формат времени мм:сс
-function formatTime(seconds) {
-  const m = Math.floor(seconds / 60);
-  const s = Math.floor(seconds % 60);
-  return `${m}:${s < 10 ? "0" : ""}${s}`;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial
 }
 
-// ===========================
-// COMMENTS — сохраняются в localStorage
-// ===========================
-const form = document.getElementById("commentForm");
-const list = document.getElementById("commentList");
-let comments = JSON.parse(localStorage.getItem("comments") || "[]");
-
-function renderComments() {
-  list.innerHTML = "";
-  comments.forEach(c => {
-    const d = document.createElement("div");
-    d.className = "comment";
-    d.innerHTML = `
-      <div class="comment-head">
-        <div class="author">${c.name}</div>
-        <div class="date">${c.date}</div>
-      </div>
-      <div class="text">${c.text}</div>
-    `;
-    list.appendChild(d);
-  });
+body{
+  min-height:100vh;
+  background:radial-gradient(circle at top,#0b0b0b,#050505 60%,#000);
+  color:#fff;
+  display:flex;
+  justify-content:center;
+  padding:20px 0;
+  overflow-x:hidden;
 }
-renderComments();
 
-form.addEventListener("submit", e => {
-  e.preventDefault();
-  const name = document.getElementById("name").value;
-  const text = document.getElementById("text").value;
-  const date = new Date().toLocaleString();
-  comments.push({ name, text, date });
-  localStorage.setItem("comments", JSON.stringify(comments));
-  renderComments();
-  form.reset();
-});
-
-// ===========================
-// AVATAR — статический с GitHub
-// ===========================
-const avatar = document.querySelector(".avatar");
-avatar.src = "https://gdetyphoon.github.io/photo/avatar.jpg";
-
-// ===========================
-// PARTICLES — фоновые частицы
-// ===========================
-const pBox = document.getElementById("particles");
-for (let i = 0; i < 30; i++) {
-  const s = document.createElement("span");
-  const size = Math.random() * 3 + 1;
-  s.style.position = "absolute";
-  s.style.width = size + "px";
-  s.style.height = size + "px";
-  s.style.background = "rgba(255,255,255,.5)";
-  s.style.borderRadius = "50%";
-  s.style.left = Math.random() * 100 + "%";
-  s.style.top = Math.random() * 100 + "%";
-  s.style.animation = `float ${Math.random() * 20 + 10}s linear infinite`;
-  pBox.appendChild(s);
+/* particles */
+#particles{
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:0;
 }
-const st = document.createElement("style");
-st.innerHTML = "@keyframes float{from{transform:translateY(0)}to{transform:translateY(-120vh)}}";
-document.head.appendChild(st);
+
+/* card */
+.card{
+  width:100%;
+  max-width:380px;
+  background:linear-gradient(180deg,#0a0a0a,#111,#0a0a0a);
+  border-radius:22px;
+  overflow:hidden;
+  box-shadow:0 15px 40px rgba(0,0,0,.8);
+  position:relative;
+  z-index:1;
+}
+.glow{
+  animation:cardGlow 4s ease-in-out infinite;
+}
+@keyframes cardGlow{
+  0%,100%{box-shadow:0 0 20px rgba(255,255,255,.05),0 15px 40px rgba(0,0,0,.8)}
+  50%{box-shadow:0 0 35px rgba(255,255,255,.12),0 20px 50px rgba(0,0,0,.9)}
+}
+
+/* header */
+.header{
+  height:160px;
+  background:
+    radial-gradient(circle at top left,#444,#000 60%),
+    linear-gradient(135deg,#000,#222);
+}
+
+/* avatar */
+.avatar{
+  width:96px;
+  height:96px;
+  border-radius:50%;
+  border:3px solid #fff;
+  position:absolute;
+  top:110px;
+  left:50%;
+  transform:translateX(-50%);
+  object-fit:cover;
+  z-index:2;
+}
+.pulse{
+  animation:pulse 2.5s infinite;
+}
+@keyframes pulse{
+  0%{box-shadow:0 0 0 0 rgba(255,255,255,.6)}
+  70%{box-shadow:0 0 0 18px rgba(255,255,255,0)}
+  100%{box-shadow:0 0 0 0 rgba(255,255,255,0)}
+}
+
+/* body */
+.body{
+  padding:70px 20px 20px;
+  text-align:center;
+}
+.name{font-size:26px;font-weight:700}
+.subtitle{margin-top:6px;font-size:13px;color:#aaa}
+.desc{font-size:14px;line-height:1.6;color:#ddd;margin:18px 0 14px}
+.neon-text{text-shadow:0 0 6px rgba(255,255,255,.6),0 0 12px rgba(255,255,255,.4);}
+
+/* glass */
+.glass{
+  background:rgba(20,20,20,.7);
+  backdrop-filter:blur(6px);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:15px;
+}
+
+/* player */
+.player{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  margin:15px 0;
+  padding:15px;
+  border-radius:15px;
+  background:rgba(255,255,255,0.1);
+  backdrop-filter:blur(10px);
+  box-shadow:0 10px 25px rgba(0,0,0,.6);
+}
+.play-btn{
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#ff6ec4,#7873f5);
+  color:#fff;
+  border:none;
+  font-size:20px;
+  font-weight:700;
+  cursor:pointer;
+  transition:transform 0.2s, box-shadow 0.2s;
+  box-shadow:0 0 15px rgba(255,110,196,0.6),0 0 20px rgba(120,115,245,0.5);
+}
+.play-btn:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 25px rgba(255,110,196,0.8),0 0 30px rgba(120,115,245,0.7);
+}
+.track-name{
+  font-size:14px;
+  color:#ddd;
+}
+.track-time{
+  font-size:13px;
+  color:#fff;
+  margin-top:4px;
+}
+
+/* progress bar */
+.progress-container{
+  width:100%;
+  height:6px;
+  background:rgba(255,255,255,0.2);
+  border-radius:3px;
+  overflow:hidden;
+  margin-top:5px;
+  cursor:pointer;
+}
+.progress{
+  height:100%;
+  width:0%;
+  background:linear-gradient(90deg,#ff6ec4,#7873f5);
+  border-radius:3px;
+  transition:width 0.2s linear;
+}
+
+/* telegram */
+.tg-wrap{
+  display:flex;
+  justify-content:center;
+  margin:8px 0 18px;
+}
+.tg-btn{
+  width:54px;
+  height:54px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#0f0f0f,#1a1a1a);
+  border:1px solid #2a2a2a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-decoration:none;
+  color:#fff;
+  font-size:26px;
+}
+.glow-btn{
+  position:relative;
+}
+.glow-btn::after{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:inherit;
+  background:linear-gradient(45deg,#fff,#888,#fff);
+  opacity:.15;
+  filter:blur(8px);
+  z-index:-1;
+}
+
+/* comments */
+.comments{
+  border-top:1px solid #222;
+  padding:18px;
+  margin-top:6px;
+}
+.comments h2{font-size:16px;margin-bottom:12px}
+.comment{
+  background:#0d0d0d;
+  border:1px solid #222;
+  border-radius:12px;
+  padding:10px 12px;
+  margin-bottom:10px;
+}
+.comment-head{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:6px;
+}
+.author{font-size:12px;color:#aaa}
+.date{font-size:11px;color:#666}
+.text{font-size:13px;color:#ddd;line-height:1.4}
+
+/* form */
+.form input,.form textarea{
+  width:100%;
+  background:#0a0a0a;
+  border:1px solid #222;
+  border-radius:10px;
+  padding:10px 12px;
+  color:#fff;
+  margin-bottom:10px;
+  font-size:13px;
+}
+.form textarea{resize:none;height:70px}
+.form button{
+  width:100%;
+  background:#111;
+  border:1px solid #2a2a2a;
+  color:#fff;
+  padding:10px;
+  border-radius:12px;
+  cursor:pointer;
+  transition:0.2s;
+}
+.form button:hover{
+  box-shadow:0 0 15px rgba(255,255,255,0.3);
+}
+
+/* upload button (если нужно) */
+.upload-btn{
+  margin-top:10px;
+  background:#111;
+  border:1px solid #2a2a2a;
+  color:#fff;
+  padding:8px 14px;
+  border-radius:12px;
+  font-size:13px;
+  cursor:pointer;
+}
+.upload-btn:hover{
+  box-shadow:0 0 10px rgba(255,255,255,.2);
+}
