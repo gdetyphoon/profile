@@ -38,7 +38,7 @@ body {
 
 /* CARD */
 .card {
-  width: 100%;
+  width: 90%;
   max-width: 380px;
   background: linear-gradient(180deg, #0a0a0a, #111, #0a0a0a);
   border-radius: 22px;
@@ -95,8 +95,17 @@ body {
 
 /* BODY */
 .body {
-  padding: 70px 20px 22px;
+  padding: 70px 15px 22px;
   text-align: center;
+}
+
+/* NAME + ROLE */
+.name-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 4px;
 }
 
 .name {
@@ -110,19 +119,28 @@ body {
 
 @keyframes nameGlow {
   from { text-shadow: 0 0 6px rgba(255,255,255,.4); }
-  to { text-shadow: 0 0 14px rgba(255,255,255,.8); }
+  to   { text-shadow: 0 0 14px rgba(255,255,255,.8); }
 }
 
+.role {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ff2a2a;
+  text-shadow: 0 0 4px #ff2a2a, 0 0 8px rgba(255,42,42,.5), 0 0 12px rgba(255,42,42,.3);
+  letter-spacing: 1px;
+}
+
+/* SUBTITLE */
 .subtitle {
   margin-top: 6px;
   font-size: 13px;
   color: #aaa;
 }
 
-/* NOTICE PREMIUM DESIGN */
+/* NOTICE */
 .notice {
-  margin: 20px 0;
-  padding: 18px;
+  margin: 18px 0;
+  padding: 16px;
   border-radius: 20px;
   background: linear-gradient(145deg, rgba(255,255,255,.05), rgba(255,255,255,.01));
   border: 1px solid rgba(255,255,255,.15);
@@ -133,6 +151,7 @@ body {
   transition: all .4s ease;
 }
 
+/* NOTICE HEAD */
 .notice-head {
   display: flex;
   justify-content: space-between;
@@ -157,6 +176,7 @@ body {
   opacity: .75;
 }
 
+/* NOTICE MAIN */
 .notice-main b,
 .notice-main .highlight {
   color: #00f9ff;
@@ -164,6 +184,7 @@ body {
   text-shadow: 0 0 8px #00f9ff, 0 0 16px rgba(0,249,255,.3);
 }
 
+/* NOTICE DETAILS */
 .notice-details summary {
   cursor: pointer;
   font-weight: 600;
@@ -222,8 +243,8 @@ body {
 }
 
 .tg-btn {
-  width: 56px;
-  height: 56px;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
   border: 1px solid rgba(255,255,255,.2);
   background: transparent url("https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg") center / 60% no-repeat;
@@ -233,4 +254,14 @@ body {
 .tg-btn:hover {
   transform: scale(1.15) rotate(5deg);
   box-shadow: 0 0 22px rgba(0,249,255,.6);
+}
+
+/* MEDIA QUERIES — для мобильных */
+@media (max-width: 420px) {
+  .card { width: 95%; }
+  .name { font-size: 22px; }
+  .role { font-size: 11px; }
+  .subtitle { font-size: 12px; }
+  .notice { font-size: 13px; padding: 14px; }
+  .tg-btn { width: 46px; height: 46px; }
 }
