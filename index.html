@@ -1,29 +1,56 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <title>Мой стильный сайт</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>GdeTyphoon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="profile-card">
-        <div class="header"></div>
-        <img src="avatar.png" alt="Аватар" class="avatar">
-        <h1>Твоё Имя</h1>
-        <div class="tags">
-            <span>WebDev</span>
-            <span>Python</span>
-            <span>HTML/CSS</span>
-            <span>JS</span>
-        </div>
-        <p class="description">
-            Привет! Я создаю сайты и занимаюсь веб-разработкой.
-        </p>
-        <div class="social-icons">
-            <a href="#"><img src="github.png" alt="GitHub"></a>
-            <a href="#"><img src="globe.png" alt="Website"></a>
-            <a href="#"><img src="telegram.png" alt="Telegram"></a>
-        </div>
+
+<div class="card">
+
+  <div class="header"></div>
+  <img class="avatar" src="https://i.imgur.com/7kQEsHU.png">
+
+  <div class="body">
+    <div class="name">GdeTyphoon</div>
+    <div class="subtitle">Digital profile</div>
+
+    <div class="desc">
+      Worker, Coder, WebDev,<br>
+      Social Engineer, Reverse Engineer
     </div>
+
+    <!-- MUSIC PLAYER -->
+    <div class="player">
+      <button id="playBtn" class="play-btn">▶</button>
+      <span class="track-name">Happy Nation</span>
+    </div>
+
+    <!-- TELEGRAM -->
+    <div class="tg-wrap">
+      <a class="tg-btn" href="https://t.me/USERNAME" target="_blank">✈</a>
+    </div>
+  </div>
+
+  <!-- COMMENTS -->
+  <div class="comments">
+    <h2>Комментарии</h2>
+    <div id="commentList"></div>
+
+    <form id="commentForm" class="form">
+      <input type="text" id="name" placeholder="Твоё имя" required>
+      <textarea id="text" placeholder="Оставь комментарий..." required></textarea>
+      <button type="submit">Отправить</button>
+    </form>
+  </div>
+
+</div>
+
+<!-- AUDIO -->
+<audio id="music" src="music/happy-nation.mp3" preload="auto"></audio>
+
+<script src="script.js"></script>
 </body>
 </html>
