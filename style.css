@@ -47,12 +47,20 @@ body {
   border: 1px solid rgba(255,255,255,.1);
   backdrop-filter: blur(14px);
   box-shadow: 0 20px 55px rgba(0,0,0,.9);
+  animation: cardGlow 4s ease-in-out infinite;
+}
+
+@keyframes cardGlow {
+  0%,100% { box-shadow: 0 0 20px rgba(255,255,255,.05), 0 15px 40px rgba(0,0,0,.8); }
+  50% { box-shadow: 0 0 35px rgba(255,255,255,.12), 0 20px 50px rgba(0,0,0,.9); }
 }
 
 /* HEADER */
 .header {
   height: 160px;
   overflow: hidden;
+  border-bottom-left-radius: 22px;
+  border-bottom-right-radius: 22px;
 }
 
 .header-video {
@@ -97,6 +105,12 @@ body {
   background: linear-gradient(90deg, #fff, #aaa, #fff);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: nameGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes nameGlow {
+  from { text-shadow: 0 0 6px rgba(255,255,255,.4); }
+  to { text-shadow: 0 0 14px rgba(255,255,255,.8); }
 }
 
 .subtitle {
@@ -105,60 +119,65 @@ body {
   color: #aaa;
 }
 
-/* NOTICE */
+/* NOTICE PREMIUM DESIGN */
 .notice {
   margin: 20px 0;
-  padding: 16px;
-  border-radius: 18px;
-  background:
-    linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
-  border: 1px solid rgba(255,255,255,.12);
-  font-size: 13.5px;
+  padding: 18px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, rgba(255,255,255,.05), rgba(255,255,255,.01));
+  border: 1px solid rgba(255,255,255,.15);
+  font-size: 14px;
   line-height: 1.65;
   text-align: left;
+  box-shadow: 0 0 12px rgba(255,255,255,.05);
+  transition: all .4s ease;
 }
 
 .notice-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .badge {
   font-size: 10px;
   letter-spacing: .12em;
-  padding: 4px 8px;
+  padding: 4px 10px;
   border-radius: 999px;
-  background: rgba(255,255,255,.15);
+  background: rgba(255,255,255,.1);
   font-weight: 700;
+  text-transform: uppercase;
 }
 
 .author {
   font-size: 12px;
+  font-weight: 600;
+  color: #fff;
   opacity: .75;
 }
 
-.notice-main span {
-  font-weight: 600;
-  color: #fff;
-}
-
-.notice-main b {
-  color: #ffb3b3;
+.notice-main b,
+.notice-main .highlight {
+  color: #00f9ff;
+  font-weight: 700;
+  text-shadow: 0 0 8px #00f9ff, 0 0 16px rgba(0,249,255,.3);
 }
 
 .notice-details summary {
   cursor: pointer;
-  margin-top: 10px;
   font-weight: 600;
+  margin-top: 10px;
   list-style: none;
   opacity: .85;
+  transition: color .3s;
 }
 
-.notice-details summary::-webkit-details-marker {
-  display: none;
+.notice-details summary:hover {
+  color: #00f9ff;
 }
+
+.notice-details summary::-webkit-details-marker { display: none; }
 
 .notice-details summary::after {
   content: " ▾";
@@ -170,21 +189,32 @@ body {
 }
 
 .notice-details ul {
-  margin: 10px 0 6px 16px;
+  margin: 10px 0 6px 18px;
+  list-style: none;
+  counter-reset: list;
 }
 
 .notice-details li {
   margin-bottom: 6px;
+  position: relative;
+  padding-left: 22px;
+}
+
+.notice-details li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: #00f9ff;
 }
 
 .notice-final {
-  margin-top: 6px;
+  margin-top: 8px;
   font-weight: 600;
   text-align: center;
   opacity: .85;
 }
 
-/* TELEGRAM */
+/* TELEGRAM BUTTON */
 .tg-wrap {
   display: flex;
   justify-content: center;
@@ -201,6 +231,6 @@ body {
 }
 
 .tg-btn:hover {
-  transform: scale(1.15);
-  box-shadow: 0 0 22px rgba(255,255,255,.7);
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 0 22px rgba(0,249,255,.6);
 }
