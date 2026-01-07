@@ -19,15 +19,18 @@ body {
 /* Рамка по всему сайту */
 .site-border {
   width: 100%;
-  max-width: 1200px;
+  max-width: 900px;
   min-height: 90vh;
-  padding: 20px;
-  border: 4px solid;
+  padding: 30px;
+  border: 6px solid; /* толщина рамки */
+  border-radius: 30px; /* заокругление углов */
   border-image-slice: 1;
-  border-image-source: linear-gradient(135deg, #ff6ec4, #7873f5); /* как у profile-btn */
-  border-radius: 16px;
+  border-image-source: linear-gradient(135deg, #ff6ec4, #7873f5); /* градиент */
   box-shadow: 0 0 20px #ff6ec4, 0 0 40px #7873f5; /* glow */
   animation: neonGlow 2s infinite alternate;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Glow анимация рамки */
@@ -46,18 +49,14 @@ body {
 /* Контент внутри рамки */
 .content {
   width: 100%;
-  height: 100%;
   text-align: center;
 }
-.content h1 {
-  font-size: 36px;
+
+.info {
+  font-size: 28px;
+  font-weight: bold;
   background: linear-gradient(135deg, #ff6ec4, #7873f5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0 10px #ff6ec4, 0 0 20px #7873f5;
-}
-.content p {
-  margin-top: 16px;
-  font-size: 18px;
-  color: #ccc;
 }
