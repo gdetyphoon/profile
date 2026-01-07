@@ -265,16 +265,15 @@ body {
   .tg-btn { width: 46px; height: 46px; }
 }
 
-/* кнопка Профиль */
 .profile-btn{
   display:inline-block;
-  margin-top:60px; /* чтобы была под аватаркой */
+  margin:12px 0 6px;   /* расстояние от ника */
   padding:10px 28px;
   border-radius:30px;
   text-decoration:none;
   font-size:14px;
   font-weight:700;
-  letter-spacing:0.5px;
+  letter-spacing:.5px;
   color:#fff;
   background:linear-gradient(135deg,#ff6ec4,#7873f5);
   box-shadow:
@@ -283,7 +282,6 @@ body {
   transition:.25s ease;
 }
 
-/* эффект наведения */
 .profile-btn:hover{
   transform:translateY(-2px) scale(1.05);
   box-shadow:
@@ -291,7 +289,6 @@ body {
     0 0 35px rgba(120,115,245,.7);
 }
 
-/* эффект нажатия */
 .profile-btn:active{
   transform:scale(.95);
 }
