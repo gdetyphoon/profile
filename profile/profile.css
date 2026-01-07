@@ -8,30 +8,25 @@
 
 body {
   min-height: 100vh;
+  background-color: #0a0a0a;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0a0a0a;
-  color: #fff;
-  overflow: hidden;
   padding: 20px;
+  color: #fff;
 }
 
-/* Рамка по краям экрана с неоном */
-.border-frame {
-  position: relative;
-  width: 90%;
-  max-width: 800px;
-  height: 90%;
+/* Рамка по всему сайту */
+.site-border {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 90vh;
+  padding: 20px;
   border: 4px solid;
   border-image-slice: 1;
-  border-width: 4px;
-  border-image-source: linear-gradient(135deg, #ff6ec4, #7873f5);
-  border-radius: 20px;
-  box-shadow: 0 0 20px #ff6ec4, 0 0 40px #7873f5;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-image-source: linear-gradient(135deg, #ff6ec4, #7873f5); /* как у profile-btn */
+  border-radius: 16px;
+  box-shadow: 0 0 20px #ff6ec4, 0 0 40px #7873f5; /* glow */
   animation: neonGlow 2s infinite alternate;
 }
 
@@ -48,13 +43,21 @@ body {
   }
 }
 
-/* Текст внутри рамки */
-.info {
-  font-size: 28px;
-  font-weight: bold;
+/* Контент внутри рамки */
+.content {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+.content h1 {
+  font-size: 36px;
   background: linear-gradient(135deg, #ff6ec4, #7873f5);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-shadow: 0 0 10px #ff6ec4, 0 0 20px #7873f5;
-  text-align: center;
+}
+.content p {
+  margin-top: 16px;
+  font-size: 18px;
+  color: #ccc;
 }
