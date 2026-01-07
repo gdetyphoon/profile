@@ -1,20 +1,52 @@
 // ===========================
-// MUSIC — play/pause по кнопке
+// MUSIC — play/pause и прогресс
 // ===========================
 const audio = document.getElementById("music");
 const btn = document.getElementById("playBtn");
+const currentTimeEl = document.getElementById("currentTime");
+const durationEl = document.getElementById("duration");
+const progress = document.getElementById("progress");
+const progressContainer = document.querySelector(".progress-container");
 
+// Кнопка play/pause
 btn.addEventListener("click", () => {
   if (audio.paused) {
     audio.play().catch(() => {
       alert("Браузер блокирует воспроизведение музыки. Нажмите ещё раз.");
     });
-    btn.textContent = "❚❚"; // пауза
+    btn.textContent = "❚❚";
   } else {
     audio.pause();
-    btn.textContent = "▶"; // play
+    btn.textContent = "▶";
   }
 });
+
+// Когда метаданные загружены, показываем длительность
+audio.addEventListener("loadedmetadata", () => {
+  durationEl.textContent = formatTime(audio.duration);
+});
+
+// Обновляем текущее время и прогресс
+audio.addEventListener("timeupdate", () => {
+  currentTimeEl.textContent = formatTime(audio.currentTime);
+  const percent = (audio.currentTime / audio.duration) * 100;
+  progress.style.width = percent + "%";
+});
+
+// Клик по прогресс-бару для перемотки
+progressContainer.addEventListener("click", e => {
+  const width = progressContainer.clientWidth;
+  const clickX = e.offsetX;
+  const newTime = (clickX / width) * audio.duration;
+  audio.currentTime = newTime;
+});
+
+// Формат времени мм:сс
+function formatTime(seconds) {
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${m}:${s < 10 ? "0" : ""}${s}`;
+}
 
 // ===========================
 // COMMENTS — сохраняются в localStorage
@@ -77,5 +109,3 @@ for (let i = 0; i < 30; i++) {
 const st = document.createElement("style");
 st.innerHTML = "@keyframes float{from{transform:translateY(0)}to{transform:translateY(-120vh)}}";
 document.head.appendChild(st);
-
-
