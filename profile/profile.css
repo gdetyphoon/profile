@@ -12,31 +12,51 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #0a0a0a; /* тёмный фон */
+  background-color: #0a0a0a;
   color: #fff;
+  overflow: hidden;
 }
 
-/* Карточка */
-.card {
-  background-color: #111; /* тёмный фон карточки */
-  border: 2px solid #00ffff; /* голубая обводка */
+/* Рамка по краям экрана */
+.border-frame {
+  position: relative;
+  width: 90%;
+  height: 90%;
+  border: 4px solid #00ffff;
   border-radius: 16px;
-  padding: 50px 80px;
-  text-align: center;
-  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4); /* glow */
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 0 30px rgba(0, 255, 255, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* Эффект при наведении */
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 30px rgba(0, 255, 255, 0.8);
+/* Карточка внутри рамки */
+.card {
+  background-color: #111;
+  padding: 40px 60px;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
 }
 
 /* Текст */
 .info {
   font-size: 24px;
   color: #00ffff;
-  text-shadow: 0 0 8px #00ffff;
+  text-shadow: 0 0 10px #00ffff;
   font-weight: bold;
+  text-align: center;
+}
+
+/* Glow анимация рамки */
+@keyframes neonGlow {
+  0%, 100% {
+    box-shadow: 0 0 20px #00ffff, 0 0 40px #00ffff, 0 0 60px #00ffff;
+  }
+  50% {
+    box-shadow: 0 0 40px #00ffff, 0 0 80px #00ffff, 0 0 100px #00ffff;
+  }
+}
+
+.border-frame {
+  animation: neonGlow 2s infinite alternate;
 }
