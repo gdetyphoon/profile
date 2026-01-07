@@ -99,13 +99,13 @@ body {
   text-align: center;
 }
 
-/* NAME + VERIFIED */
+/* NAME + VERIFIED над именем */
 .name-wrapper {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  gap: 8px;
   margin-bottom: 4px;
+  position: relative;
 }
 
 .name {
@@ -115,6 +115,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: nameGlow 3s ease-in-out infinite alternate;
+  position: relative;
 }
 
 @keyframes nameGlow {
@@ -122,9 +123,17 @@ body {
   to   { text-shadow: 0 0 14px rgba(255,255,255,.8); }
 }
 
-.verified img {
+.verified {
+  position: absolute;
+  top: -14px;
   width: 22px;
   height: 22px;
+  animation: pulse 2s infinite;
+}
+
+.verified img {
+  width: 100%;
+  height: 100%;
   filter: drop-shadow(0 0 4px #00f9ff) drop-shadow(0 0 8px rgba(0,249,255,.5));
   border-radius: 50%;
 }
@@ -147,7 +156,6 @@ body {
   line-height: 1.65;
   text-align: left;
   box-shadow: 0 0 12px rgba(255,255,255,.05);
-  transition: all .4s ease;
 }
 
 /* TELEGRAM BUTTON */
@@ -175,7 +183,7 @@ body {
 @media (max-width: 420px) {
   .card { width: 95%; }
   .name { font-size: 22px; }
-  .verified img { width: 18px; height: 18px; }
+  .verified { width: 18px; height: 18px; top: -10px; }
   .subtitle { font-size: 12px; }
   .notice { font-size: 13px; padding: 14px; }
   .tg-btn { width: 46px; height: 46px; }
