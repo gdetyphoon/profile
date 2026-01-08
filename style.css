@@ -330,3 +330,28 @@ body {
 .watch-btn:active {
     transform: scale(0.96);
 }
+
+.credit {
+    position: fixed;
+    bottom: 14px;
+    right: 18px;
+
+    font-size: 12px;
+    font-family: Arial, sans-serif;
+    letter-spacing: 0.5px;
+
+    color: rgba(255, 255, 255, 0.45);
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(6px);
+
+    padding: 6px 12px;
+    border-radius: 14px;
+
+    user-select: none;
+    pointer-events: none; /* чтобы не мешало кликам */
+}
+
+.credit span {
+    color: rgba(255, 255, 255, 0.75);
+    font-weight: 600;
+}
