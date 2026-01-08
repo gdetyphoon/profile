@@ -183,6 +183,13 @@ body {
   text-shadow: 0 0 8px #FF0000, 0 0 16px rgba(0,249,255,.3);
 }
 
+.notice-red a,
+.notice-red .higatl {
+  color: #FF1493;
+  font-weight: 700;
+  text-shadow: 0 0 8px #FF0000, 0 0 16px rgba(0,249,255,.3);
+}
+
 /* NOTICE DETAILS */
 .notice-details summary {
   cursor: pointer;
