@@ -74,7 +74,7 @@ body {
 .avatar {
   width: 96px;
   height: 96px;
-  border-radius: 50%;
+  border-radius: 80%;
   border: 3px solid #fff;
   position: absolute;
   top: 110px;
