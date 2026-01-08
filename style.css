@@ -355,3 +355,24 @@ body {
     color: rgba(255, 255, 255, 0.75);
     font-weight: 600;
 }
+
+.watermark {
+    position: fixed;
+    bottom: 12px;
+    right: 14px;
+
+    font-size: 11px;
+    font-family: "Inter", Arial, sans-serif;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+
+    color: rgba(255, 255, 255, 0.22);
+    pointer-events: none;
+    user-select: none;
+}
+
+.watermark em {
+    font-style: normal;
+    margin-left: 6px;
+    color: rgba(255, 255, 255, 0.35);
+}
