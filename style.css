@@ -428,14 +428,15 @@ body {
   z-index: 9999;
 }
 
-/* === ОБЁРТКА === */
-.tt-wrap {
+/* === ОБЁРТКА ДЛЯ КНОПОК === */
+.social-wrap {
   display: flex;
-  justify-content: center;
-  margin-top: 10px;
+  justify-content: center;  /* центровка по горизонтали */
+  gap: 10px;               /* расстояние между кнопками */
+  margin-top: 10px;        /* отступ сверху */
 }
 
-/* === КНОПКА === */
+/* === КНОПКА TIKTOK === */
 .tt-btn {
   width: 50px;
   height: 50px;
@@ -445,7 +446,6 @@ body {
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* === ЭФФЕКТЫ === */
 .tt-btn:hover {
   transform: scale(1.15) rotate(5deg);
   box-shadow: 0 0 22px rgba(29, 161, 242, 0.6);
@@ -455,9 +455,28 @@ body {
   transform: scale(1.05);
 }
 
+/* === КНОПКА TELEGRAM === */
+.tg-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: transparent url("https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg") center / 60% no-repeat;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.tg-btn:hover {
+  transform: scale(1.15) rotate(5deg);
+  box-shadow: 0 0 22px rgba(0, 249, 255, 0.6);
+}
+
+.tg-btn:active {
+  transform: scale(1.05);
+}
+
 /* 📱 МОБИЛЬНАЯ АДАПТАЦИЯ */
 @media (max-width: 480px) {
-  .tt-btn {
+  .tt-btn, .tg-btn {
     width: 45px;
     height: 45px;
   }
